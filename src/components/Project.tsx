@@ -18,13 +18,18 @@ import StockHub from "../assets/ProjectImage/Stockhub1.png";
 import StockHub1 from "../assets/ProjectImage/Stockhub2.png";
 import StockHub2 from "../assets/ProjectImage/Stockhub3.png";
 import StockHub3 from "../assets/ProjectImage/Stockhub4.png";
-import FullscreenImageModal from "./FullscreenImageModal";
 
+import Kapetayo from "../assets/ProjectImage/KapeTayo1.png";
+import Kapetayo1 from "../assets/ProjectImage/KapeTayo2.png";
+import Kapetayo2 from "../assets/ProjectImage/KapeTayo3.png";
+
+import FullscreenImageModal from "./FullscreenImageModal";
 
 
 function Project() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [OpenById, setOpenById] = useState<null | string>(null);
+
 
   function getColor(tool: string) {
     switch (tool.toLowerCase()) {
@@ -49,7 +54,7 @@ function Project() {
     {
       id: "1",
       title: "KapeTayo - Coffee Shop Management",
-      image: [coffeeOverview, coffeeOverview1, coffeeOverview2],
+      image: [Kapetayo, Kapetayo1, Kapetayo2],
       description:
         "A comprehensive coffee shop management system with inventory tracking, order management, and customer loyalty features.",
       tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
@@ -96,11 +101,11 @@ function Project() {
   }
 
   return (
-    <Card className="p-4">
+    <Card className="p-4 dark:bg-black">
       <div className="space-y-4">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-            <FolderGit size={20} className="text-black/50" />
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-white/60 flex items-center gap-2">
+            <FolderGit size={20} className="text-black/50 dark:text-white/60" />
             Projects
           </h2>
           <Link
@@ -128,14 +133,14 @@ function Project() {
             return (
               <Card
                 key={project.id}
-                className="overflow-hidden border-0 shadow-sm rounded-xl transition-all duration-300 hover:shadow-md"
+                className="overflow-hidden border-0 shadow-sm rounded-xl transition-all duration-300 hover:shadow-md p-2"
               >
                 <button
                   onClick={() => handleOpenById(project.id)}
-                  className="flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 transition-colors duration-200"
+                  className="flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 dark:hover:bg-white/30 rounded transition-colors duration-200"
                 >
                   <div className="flex items-center space-x-3">
-                    <span className="font-semibold text-gray-800">
+                    <span className="font-semibold text-gray-800 dark:text-[#F3F4F6]">
                       {project.title}
                     </span>
                   </div>
@@ -157,7 +162,7 @@ function Project() {
                       </div>
 
                       <div className="md:w-3/5 space-y-4">
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 leading-relaxed dark:text-[#F3F4F6]">
                           {project.description}
                         </p>
 
