@@ -12,6 +12,10 @@ import tailwind from "../assets/tailwind.svg"
 import typescript from "../assets/typescript.png"
 import vite from "../assets/vite.svg"
 import vercel from "../assets/vercel.svg"
+import prisma from "../assets/prisma.png"
+import postsql from "../assets/postgre.png"
+
+
 
 function Logos() {
 
@@ -19,6 +23,7 @@ function Logos() {
       html,
       css,
       mysql,
+      postsql,
       python,
       cpp,
       javascript,
@@ -28,7 +33,8 @@ function Logos() {
       tailwind,
       mongodb,
       vite,
-      vercel
+      vercel,
+      prisma
     ]
   
   return (

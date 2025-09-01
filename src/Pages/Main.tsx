@@ -1,4 +1,4 @@
-import { MapPin, Calendar, ExternalLink, FolderGit, ChevronUp, ChevronDown, Github } from "lucide-react";
+import { MapPin, Calendar, ExternalLink, FolderGit, ChevronUp, ChevronDown, Github, ClipboardList } from "lucide-react";
 import Logos from "../components/Logos";
 import GitHubCalendar from "react-github-calendar";
 import { Card } from "../components/ui/card";
@@ -9,7 +9,7 @@ function Main() {
   
 
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-8">
+    <div className="max-w-7xl mx-auto p-4 md:p-6 space-y-8">
       {/* Header Section */}
       <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-0 shadow-sm rounded-xl">
         <div className="flex flex-col md:flex-row items-center gap-6">
@@ -47,7 +47,7 @@ function Main() {
               <span className="text-gray-300">|</span>
               <a 
                 href="#" 
-                className="flex items-center text-sm text-blue-600 hover:text-blue-700 transition-colors"
+                className="flex items-center text-sm text-black hover:text-black/50 transition-colors"
               >
                 <ExternalLink size={16} className="mr-1" />
                 Portfolio
@@ -60,7 +60,7 @@ function Main() {
       {/* Skills/Logos Section */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <div className="h-5 w-1 bg-blue-500 rounded-full"></div>
+          <div className="h-5 w-1 bg-black rounded-full"></div>
           Skills & Technologies
         </h2>
         <Card className="p-4 border-0 shadow-sm rounded-xl">
@@ -68,33 +68,51 @@ function Main() {
         </Card>
       </div>
       
-      {/* GitHub Contributions */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <Calendar size={20} className="text-blue-500" />
-          GitHub Contributions
-        </h2>
-        <Card className="p-4 border-0 shadow-sm rounded-xl">
-          <GitHubCalendar
-            username="allenpt221"
-            blockSize={13}    
-            blockMargin={5}    
-            colorScheme="light"
-            fontSize={16}
-          />
-          <div className="flex justify-end mt-3">
-            <a 
-              href={`https://github.com/allenpt221`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1 transition-colors"
-            >
-              View full profile
-              <ExternalLink size={14} />
-            </a>
+      {/* About */}
+      <div className="flex md:flex-row flex-col gap-2">
+        <Card className="p-4 shadow-sm rounded-xl text-gray-400">
+          <div className="">
+            <span className="flex gap-1 font-medium text-lg items-center">
+              <ClipboardList size={15}/>
+              About
+            </span>
+
+            <p>I’m an Information Technology student currently in my 3rd year, skilled and passionate about website development. I primarily work with the PERN and MERN stacks (PostgreSQL, MongoDB, Express, React, Node.js), and I can also develop applications using Next.js with pure JavaScript and PostgreSQL as the database.
+              <br />
+              <br />
+              I specialize in building dynamic, responsive, and user-friendly web applications. My experience with both PERN and MERN stacks allows me to create scalable back-end architectures while delivering smooth front-end experiences. Using Next.js, I develop performant, SEO-friendly web applications, combining modern frameworks with efficient database management.
+              <br />
+              <br />
+              Although I’m still a 3rd year, I am passionate about solving real-world problems through technology, optimizing workflows, and continuously learning new tools and frameworks to stay ahead in the ever-evolving tech landscape. I enjoy working in collaborative environments where innovation and creativity drive impactful results.
+              Whether it’s developing full-stack applications from scratch, integrating APIs, or optimizing existing platforms, I am committed to delivering high-quality solutions that meet both company and user needs.</p>
           </div>
         </Card>
+
+      {/* GitHub Contributions */}
+        <div className="space-y-4 overflow-hidden">
+          <Card className="p-4 shadow-sm rounded-xl text-gray-400 ">
+              <GitHubCalendar
+                  username="allenpt221"
+                  blockSize={14.5}    
+                  blockMargin={5}    
+                  colorScheme="light"
+                  fontSize={14}
+              />
+            <div className="flex justify-end mt-3">
+              <a 
+                href={`https://github.com/allenpt221`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1 transition-colors"
+              >
+                View full profile
+                <ExternalLink size={14} />
+              </a>
+            </div>
+          </Card>
+        </div>
       </div>
+
       
       {/* Personal Projects */}
       <Project />

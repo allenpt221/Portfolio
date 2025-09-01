@@ -4,7 +4,7 @@ import Projects from "./Pages/Projects"
 
 function App() {
   return (
-    <div className="max-w-5xl mx-auto py-4">
+    <div className="">
 
       <Routes>
         <Route path="/" element={<Main />} />
