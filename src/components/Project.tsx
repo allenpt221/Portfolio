@@ -193,7 +193,7 @@ function Project() {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                            className="flex items-center space-x-1 text-sm font-medium text-gray-700 dark:hover:text-white hover:text-gray-900 transition-colors"
                           >
                             <Github size={16} />
                             <span>Code</span>

@@ -4,6 +4,7 @@ import GitHubCalendar from "react-github-calendar";
 import { Card } from "../components/ui/card";
 import Project from "@/components/Project";
 import { useTheme } from "@/components/theme-provider";
+import { motion } from 'framer-motion';
 
 function Main() {
   const { theme, setTheme } = useTheme();
@@ -56,7 +57,7 @@ function Main() {
           <div className="flex md:flex-row flex-col justify-between w-full md:items-baseline items-center">
             <div className="text-center md:text-left">
               <h1 className="text-2xl md:text-3xl font-bold" style={{ color: currentColors.text }}>
-                Patrick Allen Pena
+                Patrick Allen Peña
               </h1>
               <div className="flex items-center justify-center md:justify-start mt-2" style={{ color: currentColors.lightText }}>
                 <MapPin size={16} className="mr-1.5" />
@@ -122,27 +123,54 @@ function Main() {
         {/* About */}
         <Card className="p-6 shadow-lg rounded-xl" style={{ backgroundColor: currentColors.card }}>
           <div>
-            <span className="flex gap-2 font-semibold text-lg items-center mb-4" style={{ color: currentColors.primary }}>
+            <motion.span 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.10 }}
+              viewport={{ once: true, amount: 0.3 }}
+              
+            className="flex gap-2 font-semibold text-lg items-center mb-4" style={{ color: currentColors.primary }}>
               <ClipboardList size={18}/>
               About
-            </span>
+            </motion.span>
 
             <p className="leading-relaxed" style={{ color: currentColors.lightText }}>
-              I'm an Information Technology student currently in my 3rd year, skilled and passionate about website development. 
-              I primarily work with the PERN and MERN stacks (PostgreSQL, MongoDB, Express, React, Node.js), and I can also develop 
-              applications using Next.js with pure JavaScript and PostgreSQL as the database.
+              <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                I'm an Information Technology student currently in my 3rd year, skilled and passionate about website development. 
+                I primarily work with the PERN and MERN stacks (PostgreSQL, MongoDB, Express, React, Node.js), and I can also develop 
+                applications using Next.js with pure JavaScript and PostgreSQL as the database.
+              </motion.p>
               <br />
               <br />
-              I specialize in building dynamic, responsive, and user-friendly web applications. My experience with both PERN and MERN 
-              stacks allows me to create scalable back-end architectures while delivering smooth front-end experiences. Using Next.js, 
-              I develop performant, SEO-friendly web applications, combining modern frameworks with efficient database management.
+              <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.20 }}
+                viewport={{ once: true, amount: 0.3 }}
+                  >
+                I specialize in building dynamic, responsive, and user-friendly web applications. My experience with both PERN and MERN 
+                stacks allows me to create scalable back-end architectures while delivering smooth front-end experiences. Using Next.js, 
+                I develop performant, SEO-friendly web applications, combining modern frameworks with efficient database management.
+              </motion.p>
               <br />
               <br />
-              Although I'm still a 3rd year, I am passionate about solving real-world problems through technology, optimizing workflows, 
-              and continuously learning new tools and frameworks to stay ahead in the ever-evolving tech landscape. I enjoy working in 
-              collaborative environments where innovation and creativity drive impactful results.
-              Whether it's developing full-stack applications from scratch, integrating APIs, or optimizing existing platforms, I am 
-              committed to delivering high-quality solutions that meet both company and user needs.
+              <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                Although I'm still a 3rd year, I am passionate about solving real-world problems through technology, optimizing workflows, 
+                and continuously learning new tools and frameworks to stay ahead in the ever-evolving tech landscape. I enjoy working in 
+                collaborative environments where innovation and creativity drive impactful results.
+                Whether it's developing full-stack applications from scratch, integrating APIs, or optimizing existing platforms, I am 
+                committed to delivering high-quality solutions that meet both company and user needs.
+              </motion.p>
             </p>
           </div>
         </Card>
@@ -155,7 +183,12 @@ function Main() {
                 <Github size={18} />
                 <span className="font-semibold">GitHub Contributions</span>
               </div>
-              <div className="flex justify-center">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.10 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-center">
                 <GitHubCalendar
                   username="allenpt221"
                   blockSize={12}
@@ -166,8 +199,13 @@ function Main() {
                   }}
                   fontSize={12}
                 />
-              </div>
-              <div className="flex justify-end mt-4">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                viewport={{ once: true, amount: 0.3 }}
+              className="flex justify-end mt-4">
                 <a 
                   href={`https://github.com/allenpt221`}
                   target="_blank"
@@ -178,14 +216,48 @@ function Main() {
                   View full profile
                   <ExternalLink size={14} />
                 </a>
-              </div>
+              </motion.div>
             </Card>
           </div>
             <Card className="p-3">
-              <span className="flex items-center gap-1 font-medium text-black/70 text-lg">
-                <Phone size={20} />
-                Connect With Me
-              </span>
+              <div className="space-y-1">
+                <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.10 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="flex items-center gap-2 font-medium text-black/70 text-lg dark:text-white">
+                  <Phone size={20} />
+                  Connect With Me
+                </motion.span>
+                <motion.p 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                className="text-gray-500 text-sm px-3">
+                  I’m actively seeking new job opportunities. If you know of any roles or have feedback to share, I’d be grateful for your insights.
+                </motion.p>
+
+                <motion.form 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                className="space-y-2 text-gray-500">
+                  <label>Email</label>
+                  <input type="text"
+                  name="email" className="w-full border p-2 rounded dark:border-white bg-gray-100"/>
+
+                  <label>Perspective</label>
+                  <input type="text"
+                  name="email" className="w-full border p-2 rounded dark:border-white bg-gray-100"/>
+
+                  <button type="submit" className="bg-black/50 rounded text-white  w-full font-medium p-2 mt-2">
+                    Submit
+                  </button>
+                </motion.form>
+              </div>
             </Card>
         </div>
       </div>
