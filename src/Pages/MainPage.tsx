@@ -5,9 +5,19 @@ import { Card } from "../components/ui/card";
 import Project from "@/components/Project";
 import { useTheme } from "@/components/theme-provider";
 import { motion } from 'framer-motion';
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
+
 
 function Main() {
   const { theme, setTheme } = useTheme();
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const [formData, setFormData] = useState({
+  email: "",
+  message: "",
+});
   
   // Define a consistent color palette
   const colors = {
@@ -30,6 +40,39 @@ function Main() {
   };
 
   const currentColors = theme === 'dark' ? colors.dark : colors.light;
+   
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setSubmitting(true);
+
+  const serviceID = import.meta.env.VITE_SERVICE_ID!;
+  const templateID = import.meta.env.VITE_TEMPLATE_ID!;
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY!;
+
+  emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
+    () => {
+      setMessage("✅ Message sent into email!");
+      setSubmitting(false);
+
+      // Clear inputs
+      setFormData({ email: "", message: "" });
+
+      setTimeout(() => setMessage(""), 5000);
+    },
+    (error) => {
+      console.error("EmailJS error:", error);
+      setMessage("❌ Something went wrong, please try again later");
+      setSubmitting(false);
+      setTimeout(() => setMessage(""), 5000);
+    }
+  );
+};
+
 
   return (
     <div 
@@ -240,22 +283,43 @@ function Main() {
                 </motion.p>
 
                 <motion.form 
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 }}
                   viewport={{ once: true, amount: 0.3 }}
-                className="space-y-2 text-gray-500">
+                  
+                  onSubmit={sendEmailToMe} className="space-y-2 text-gray-500">
                   <label>Email</label>
-                  <input type="text"
-                  name="email" className="w-full border p-2 rounded dark:border-white bg-gray-100"/>
+                  <input 
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100"
+                    required
+                  />
 
                   <label>Perspective</label>
-                  <input type="text"
-                  name="email" className="w-full border p-2 rounded dark:border-white bg-gray-100"/>
+                  <input 
+                    id="perspective"
+                    type="text"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100"
+                    required
+                  />
 
-                  <button type="submit" className="bg-black/50 rounded text-white  w-full font-medium p-2 mt-2">
-                    Submit
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="bg-black/80 rounded text-white w-full font-medium p-2 mt-2"
+                  >
+                    {isSubmitting ? "Sending..." : "Submit"}
                   </button>
+
+                  {message && <p className="text-sm mt-2">{message}</p>}
                 </motion.form>
               </div>
             </Card>
