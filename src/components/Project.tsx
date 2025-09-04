@@ -16,7 +16,7 @@ import { motion } from 'framer-motion'
 
 import FullscreenImageModal from "./FullscreenImageModal";
 import { getColor, projects } from "@/lib/project";
-import ProjectModal from "./modal/projectModal";
+import ProjectModal from "./modal/ProjectModal";
 
 
 function Project() {
