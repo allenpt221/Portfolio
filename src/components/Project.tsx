@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { Card } from "./ui/card";
 import { Link } from "react-router-dom";
 
+import { motion, AnimatePresence } from 'framer-motion'
+
 import coffeeOverview from "../assets/ProjectImage/CoffeeOverview1.png";
 import coffeeOverview1 from "../assets/ProjectImage/CoffeeOverview2.png";
 import coffeeOverview2 from "../assets/ProjectImage/CoffeeOverview3.png";
@@ -58,7 +60,7 @@ function Project() {
       description:
         "A comprehensive coffee shop management system with inventory tracking, order management, and customer loyalty features.",
       tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
-      githubUrl: "https://github.com/example",
+      githubUrl: "https://github.com/allenpt221",
       liveUrl: "https://kapetayo.onrender.com/",
     },
     {
@@ -68,7 +70,7 @@ function Project() {
       description:
         "An intuitive task management application with drag-and-drop functionality, team collaboration, and progress tracking.",
       tools: ["React", "Tailwind", "Static Website"],
-      githubUrl: "https://github.com/example",
+      githubUrl: "https://github.com/allenpt221/static-coffee-outline",
       liveUrl: "https://coffeeoverview.vercel.app/",
     },
     {
@@ -83,9 +85,10 @@ function Project() {
         "Node.js",
         "Express.js",
         "Supabase",
+        "Tailwind",
         "Shadcn ui",
       ],
-      githubUrl: "https://github.com/example",
+      githubUrl: "https://github.com/allenpt221",
       liveUrl: "https://stockhub-l7jk.onrender.com/",
     },
   ];
@@ -135,7 +138,11 @@ function Project() {
                 key={project.id}
                 className="overflow-hidden border-0 shadow-sm rounded-xl transition-all duration-300 hover:shadow-md p-2"
               >
-                <button
+                <motion.button
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   onClick={() => handleOpenById(project.id)}
                   className="flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 dark:hover:bg-white/30 rounded transition-colors duration-200"
                 >
@@ -149,10 +156,14 @@ function Project() {
                   ) : (
                     <ChevronDown size={20} className="text-gray-500" />
                   )}
-                </button>
-
+                </motion.button>   
                 {isOpen && OpenById === project.id && (
-                  <div className="border-t border-gray-100 p-4 animate-fadeIn">
+                  <motion.div 
+                  initial={{opacity: 0, y: -10}}
+                  animate={{opacity: 1, y: 0}}
+                  exit={{opacity: 0, y: -10}}
+                  transition={{duration: 0.5}}
+                  className="border-t border-gray-100 p-4 animate-fadeIn">
                     <div className="flex flex-col md:flex-row gap-5">
                       <div className="md:w-2/5">
                         <FullscreenImageModal
@@ -201,7 +212,7 @@ function Project() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </Card>
             );

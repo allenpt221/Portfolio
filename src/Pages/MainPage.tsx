@@ -1,18 +1,25 @@
-import { MapPin, ExternalLink,  Github, ClipboardList, Moon, Sun, Phone } from "lucide-react";
+import { useState } from "react";
+
+import { MapPin, ExternalLink,  Github, ClipboardList, Moon, Sun, Phone, Terminal, MessageCircleWarning } from "lucide-react";
 import Logos from "../components/Logos";
 import GitHubCalendar from "react-github-calendar";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card } from "../components/ui/card";
 import Project from "@/components/Project";
 import { useTheme } from "@/components/theme-provider";
 import { motion } from 'framer-motion';
 import emailjs from "@emailjs/browser";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 
 
 function Main() {
   const { theme, setTheme } = useTheme();
   const [isSubmitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [successSubmit, setSuccessSubmit] = useState(false);
 
   const [formData, setFormData] = useState({
   email: "",
@@ -56,13 +63,13 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
 
   emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
     () => {
-      setMessage("✅ Message sent into email!");
       setSubmitting(false);
+      setSuccessSubmit(true);
 
       // Clear inputs
       setFormData({ email: "", message: "" });
 
-      setTimeout(() => setMessage(""), 5000);
+      setTimeout(() => setSuccessSubmit(false), 5000);
     },
     (error) => {
       console.error("EmailJS error:", error);
@@ -111,16 +118,15 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                 I enjoy turning complex problems into simple, beautiful solutions.
               </p>
               <div className="mt-4 flex justify-center md:justify-start space-x-4">
-                <a 
-                  href="https://github.com/allenpt221" 
-                  target="_blank"
+                <Link
+                  to="https://github.com/allenpt221" 
                   rel="noopener noreferrer"
                   className="flex items-center text-sm transition-colors hover:opacity-80 font-medium"
                   style={{ color: currentColors.primary }}
                 >
                   <Github size={16} className="mr-1" />
                   GitHub
-                </a>
+                </Link>
                 <a 
                   href="#" 
                   className="flex items-center text-sm transition-colors hover:opacity-80 font-medium"
@@ -328,6 +334,23 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
 
       {/* Personal Projects */}
       <Project />
+    {successSubmit && (
+        <Alert
+            variant="default"
+            className="fixed top-4 left-1/2 -translate-x-1/2 sm:w-[28rem] border-green-400 w-[18rem] shadow-lg rounded-2xl z-50"
+          >
+            <MessageCircleWarning className="h-5 w-5 " color="green" />
+            <div>
+              <AlertTitle className="font-semibold text-green-700">
+                Successfully sent the message
+              </AlertTitle>
+              <AlertDescription className="text-green-400 text-xs">
+                Your email has been sent. I’ll get back to you soon about your hiring
+                request.
+              </AlertDescription>
+            </div>
+          </Alert>
+    )}
     </div>
   );
 }
