@@ -24,6 +24,8 @@ import StockHub3 from "../assets/ProjectImage/Stockhub4.png";
 import Kapetayo from "../assets/ProjectImage/KapeTayo1.png";
 import Kapetayo1 from "../assets/ProjectImage/KapeTayo2.png";
 import Kapetayo2 from "../assets/ProjectImage/KapeTayo3.png";
+import Kapetayo3 from "../assets/ProjectImage/KapeTayo4.png";
+
 
 import FullscreenImageModal from "./FullscreenImageModal";
 
@@ -56,7 +58,7 @@ function Project() {
     {
       id: "1",
       title: "KapeTayo - Coffee Shop Management",
-      image: [Kapetayo, Kapetayo1, Kapetayo2],
+      image: [Kapetayo, Kapetayo1, Kapetayo2, Kapetayo3],
       description:
         "A comprehensive coffee shop management system with inventory tracking, order management, and customer loyalty features.",
       tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
@@ -106,7 +108,12 @@ function Project() {
   return (
     <Card className="p-4 dark:bg-black">
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.10 }}
+          viewport={{ once: true, amount: 0.3 }}
+        className="flex justify-between items-center">
           <h2 className="text-xl font-semibold text-gray-800 dark:text-white/60 flex items-center gap-2">
             <FolderGit size={20} className="text-black/50 dark:text-white/60" />
             Projects
@@ -118,7 +125,7 @@ function Project() {
             View All
             <ArrowUpRight size={15} />
           </Link>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {projects.map((project) => {
@@ -141,7 +148,7 @@ function Project() {
                 <motion.button
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.25 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
                   viewport={{ once: true, amount: 0.3 }}
                   onClick={() => handleOpenById(project.id)}
                   className="flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 dark:hover:bg-white/30 rounded transition-colors duration-200"
