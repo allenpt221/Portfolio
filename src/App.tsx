@@ -37,7 +37,7 @@ function App() {
       card: '#FFFFFF'
     },
     dark: {
-      primary: '#60A5FA',
+      primary: '#FFFFFF',
       secondary: '#818CF8',
       text: '#F3F4F6',
       lightText: '#D1D5DB',
@@ -49,7 +49,7 @@ function App() {
   const currentColors = theme === 'dark' ? colors.dark : colors.light;
    
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -96,28 +96,53 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
         }}
       >
         <div className="flex flex-col md:flex-row items-center gap-7">
-          <div className="md:w-[13rem]">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="md:w-[13rem]">
             <img 
               src="https://scontent.fcrk7-1.fna.fbcdn.net/v/t39.30808-6/428630007_1373350323386093_3092854452950680741_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFi3jQ01ryVMVD2U0wzVOebZAXXqOCnh7NkBdeo4KeHs2ashidOl1zhm_cd7G7sxKPaex_i1KFMX-TFsCtR7b1-&_nc_ohc=t8XClXL3YKsQ7kNvwEx7Lup&_nc_oc=Adm5VMZFRz79sKQZgB3ekEbzrptbIRiF14kwOWo8GUuVT8810FuA4LGOQKAdg_Azh-8&_nc_zt=23&_nc_ht=scontent.fcrk7-1.fna&_nc_gid=fg4o5mYG6J5XmxCXT2RnzA&oh=00_AfXa-M-BoEvBNnpMKBmcvUEFhkTYNBqqR6bKgGxFt9fuzg&oe=68BA0B4A" 
               alt="Patrick Allen Pena"
               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-md transition-all duration-300 hover:scale-105"
             />
-          </div>
+          </motion.div>
           
           <div className="flex md:flex-row flex-col justify-between w-full md:items-baseline items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-2xl md:text-3xl font-bold" style={{ color: currentColors.text }}>
+              <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-2xl md:text-3xl font-bold" style={{ color: currentColors.text }}>
                 Patrick Allen Peña
-              </h1>
-              <div className="flex items-center justify-center md:justify-start mt-2" style={{ color: currentColors.lightText }}>
+              </motion.h1>
+              <motion.div 
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="flex items-center justify-center md:justify-start mt-2" style={{ color: currentColors.lightText }}>
                 <MapPin size={16} className="mr-1.5" />
                 <span>Betis Guagua Pampanga</span>
-              </div>
-              <p className="mt-3 max-w-md" style={{ color: currentColors.lightText }}>
+              </motion.div>
+              <motion.p 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="mt-3 max-w-md" style={{ color: currentColors.lightText }}>
                 Passionate full-stack developer with a focus on creating clean, efficient code and delightful user experiences. 
                 I enjoy turning complex problems into simple, beautiful solutions.
-              </p>
-              <div className="mt-4 flex justify-center md:justify-start space-x-4">
+              </motion.p>
+              <motion.div 
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="mt-4 flex justify-center md:justify-start space-x-4">
                 <Link
                   to="https://github.com/allenpt221" 
                   rel="noopener noreferrer"
@@ -135,9 +160,13 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                   <ExternalLink size={16} className="mr-1" />
                   Portfolio
                 </a>
-              </div>
+              </motion.div>
             </div>
-            <button
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0, delay: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="h-10 w-10 ml-auto flex items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 mt-4 md:mt-0"
               style={{ 
@@ -151,7 +180,7 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
               ) : (
                 <Moon size={18} style={{ color: currentColors.text }} />
               )}
-            </button>
+            </motion.button>
           </div>
         </div>
       </Card>
@@ -225,9 +254,9 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
         </Card>
 
         {/* GitHub Contributions */}
-        <div className="space-y-2 lg:w-[30rem]">
-          <div className="space-y-4 overflow-hidden">
-            <Card className="p-6 shadow-lg rounded-xl" style={{ backgroundColor: currentColors.card }}>
+        <div className="space-y-3 lg:w-[30rem]">
+          <div className="space-y-1 overflow-hidden">
+            <Card className="p-4 shadow-lg rounded-xl" style={{ backgroundColor: currentColors.card }}>
               <div className="flex items-center gap-2 mb-4" style={{ color: currentColors.primary }}>
                 <Github size={18} />
                 <span className="font-semibold">GitHub Contributions</span>
@@ -262,7 +291,7 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                   className="text-sm transition-colors hover:opacity-80 flex items-center gap-1 font-medium"
                   style={{ color: currentColors.primary }}
                 >
-                  View full profile
+                  View full Github
                   <ExternalLink size={14} />
                 </a>
               </motion.div>
@@ -294,33 +323,34 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                   transition={{ duration: 0.5, delay: 0.25 }}
                   viewport={{ once: true, amount: 0.3 }}
                   
-                  onSubmit={sendEmailToMe} className="space-y-2 text-gray-500">
+                  onSubmit={sendEmailToMe} className="space-y-2 text-gray-500 dark:text-white">
                   <label>Email</label>
                   <input 
                     id="email"
                     type="email"
                     name="email"
+                    placeholder="example@gmail.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full border p-2 rounded dark:border-white bg-gray-100"
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white mt-1"
                     required
                   />
 
                   <label>Perspective</label>
-                  <input 
+                  <textarea 
                     id="perspective"
-                    type="text"
                     name="message"
+                    rows={2}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full border p-2 rounded dark:border-white bg-gray-100"
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white mt-1 resize-none"
                     required
                   />
 
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="bg-black/80 rounded text-white w-full font-medium p-2 mt-2"
+                    className="bg-black/80 rounded text-white w-full font-medium p-2 mt-2 cursor-pointer dark:bg-white/80 dark:text-black"
                   >
                     {isSubmitting ? "Sending..." : "Submit"}
                   </button>

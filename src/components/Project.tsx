@@ -8,92 +8,27 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Card } from "./ui/card";
-import { Link } from "react-router-dom";
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-import coffeeOverview from "../assets/ProjectImage/CoffeeOverview1.png";
-import coffeeOverview1 from "../assets/ProjectImage/CoffeeOverview2.png";
-import coffeeOverview2 from "../assets/ProjectImage/CoffeeOverview3.png";
 
-import StockHub from "../assets/ProjectImage/Stockhub1.png";
-import StockHub1 from "../assets/ProjectImage/Stockhub2.png";
-import StockHub2 from "../assets/ProjectImage/Stockhub3.png";
-import StockHub3 from "../assets/ProjectImage/Stockhub4.png";
-
-import Kapetayo from "../assets/ProjectImage/KapeTayo1.png";
-import Kapetayo1 from "../assets/ProjectImage/KapeTayo2.png";
-import Kapetayo2 from "../assets/ProjectImage/KapeTayo3.png";
-import Kapetayo3 from "../assets/ProjectImage/KapeTayo4.png";
 
 
 import FullscreenImageModal from "./FullscreenImageModal";
+import ProjectModal from "./modal/projectModal";
+import { getColor, projects } from "@/lib/project";
 
 
 function Project() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [OpenById, setOpenById] = useState<null | string>(null);
 
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
-  function getColor(tool: string) {
-    switch (tool.toLowerCase()) {
-      case "react":
-      case "typescript":
-        return "bg-blue-100 text-blue-700 border border-blue-300";
-      case "mongodb":
-      case "supabase":
-      case "node.js":
-      case "node":
-        return "bg-green-100 text-green-700 border border-green-300";
-      case "tailwind":
-        return "bg-cyan-100 text-cyan-700 border border-cyan-300";
-      case "express.js":
-        return "bg-yellow-100 text-yellow-700 border border-yellow-300";
-      default:
-        return "bg-gray-100 text-gray-700 border border-gray-300";
-    }
-  }
 
-  const projects = [
-    {
-      id: "1",
-      title: "KapeTayo - Coffee Shop Management",
-      image: [Kapetayo, Kapetayo1, Kapetayo2, Kapetayo3],
-      description:
-        "A comprehensive coffee shop management system with inventory tracking, order management, and customer loyalty features.",
-      tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
-      githubUrl: "https://github.com/allenpt221",
-      liveUrl: "https://kapetayo.onrender.com/",
-    },
-    {
-      id: "2",
-      title: "Coffee Overview - Coffee Description",
-      image: [coffeeOverview, coffeeOverview1, coffeeOverview2],
-      description:
-        "An intuitive task management application with drag-and-drop functionality, team collaboration, and progress tracking.",
-      tools: ["React", "Tailwind", "Static Website"],
-      githubUrl: "https://github.com/allenpt221/static-coffee-outline",
-      liveUrl: "https://coffeeoverview.vercel.app/",
-    },
-    {
-      id: "3",
-      title: "Stockhub - Inventory Management System",
-      image: [StockHub, StockHub1, StockHub2, StockHub3],
-      description:
-        "A beautiful weather application providing detailed forecasts, severe weather alerts, and customizable locations.",
-      tools: [
-        "React",
-        "TypeScript",
-        "Node.js",
-        "Express.js",
-        "Supabase",
-        "Tailwind",
-        "Shadcn ui",
-      ],
-      githubUrl: "https://github.com/allenpt221",
-      liveUrl: "https://stockhub-l7jk.onrender.com/",
-    },
-  ];
+
+
+
 
   function handleOpenById(id: string) {
     if (isOpen && OpenById === id) {
@@ -118,17 +53,17 @@ function Project() {
             <FolderGit size={20} className="text-black/50 dark:text-white/60" />
             Projects
           </h2>
-          <Link
-            to="/projects"
+          <button
+          onClick={() => setIsOpenModal(true)}
             className="text-gray-400 flex items-center text-sm gap-1"
           >
             View All
             <ArrowUpRight size={15} />
-          </Link>
+          </button>
         </motion.div>
 
         <div className="space-y-4">
-          {projects.map((project) => {
+          {projects.slice(0, 3).map((project) => {
             const [current, setCurrent] = useState(0);
 
             useEffect(() => {
@@ -151,7 +86,7 @@ function Project() {
                   transition={{ duration: 0.5, delay: 0.15 }}
                   viewport={{ once: true, amount: 0.3 }}
                   onClick={() => handleOpenById(project.id)}
-                  className="flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 dark:hover:bg-white/30 rounded transition-colors duration-200"
+                  className="cursor-pointer flex justify-between items-center w-full sm:p-4 p-3 text-left hover:bg-gray-50 dark:hover:bg-white/30 rounded transition-colors duration-200"
                 >
                   <div className="flex items-center space-x-3">
                     <span className="font-semibold text-gray-800 dark:text-[#F3F4F6]">
@@ -226,6 +161,13 @@ function Project() {
           })}
         </div>
       </div>
+
+      {isOpenModal && (
+        <ProjectModal
+        isOpen={true}
+        onClose={() => setIsOpenModal(false)} 
+        />
+      )}
     </Card>
   );
 }

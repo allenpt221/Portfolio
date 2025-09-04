@@ -14,7 +14,7 @@ import vite from "../assets/vite.svg"
 import vercel from "../assets/vercel.svg"
 import prisma from "../assets/prisma.png"
 import postsql from "../assets/postgre.png"
-
+import { motion } from 'framer-motion';
 
 
 function Logos() {
@@ -42,7 +42,12 @@ function Logos() {
   <div className="absolute left-0 top-0 h-full w-12 z-10 bg-gradient-to-r from-white dark:from-neutral-900 to-transparent " />
   <div className="absolute right-0 top-0 h-full w-12 z-10 bg-gradient-to-l from-white dark:from-neutral-900 to-transparent " />
 
-  <div className="overflow-x-hidden">
+  <motion.div 
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: 0.10 }}
+    viewport={{ once: true, amount: 0.3 }}
+  className="overflow-x-hidden">
     <Marquee speed={50} gradient={false} pauseOnHover={true}>
       {logo.map((techStack, index) => (
         <div className="mx-2" key={index}>
@@ -50,7 +55,7 @@ function Logos() {
         </div>
       ))}
     </Marquee>
-  </div>
+  </motion.div>
 </div>
 
   )

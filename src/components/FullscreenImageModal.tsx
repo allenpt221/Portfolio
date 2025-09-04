@@ -22,7 +22,7 @@ function FullscreenImageModal({ src, alt }: { src: string; alt: string }) {
           <img
             src={src}
             alt={alt}
-            className=" xl:h-[40rem] md:h-[23rem] sm:h-[20rem] h-[9.5rem] rounded-lg shadow-lg mx-3"
+            className=" xl:h-[40rem] md:h-[23rem] sm:h-[20rem] h-[9.6rem] rounded-lg shadow-lg sm:mx-[20rem] mx-5"
           />
           <button
             onClick={() => setIsOpen(false)}
