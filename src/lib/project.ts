@@ -11,6 +11,13 @@
   import Kapetayo1 from "../assets/ProjectImage/KapeTayo2.png";
   import Kapetayo2 from "../assets/ProjectImage/KapeTayo3.png";
   import Kapetayo3 from "../assets/ProjectImage/KapeTayo4.png";
+
+  import MainStockHub from "../assets/ProjectImage/Stockhub.png";
+  import MainStudySphere from "../assets/ProjectImage/StudySphere.png";
+  import MainKapeTayo from "../assets/ProjectImage/KapeTayo.png";
+  import MainCoffeeOverView from "../assets/ProjectImage/CoffeeOverview.png";
+
+
   
 export const projects = [
     {
@@ -22,7 +29,7 @@ export const projects = [
       tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
       githubUrl: "https://github.com/allenpt221",
       liveUrl: "https://kapetayo.onrender.com/",
-      imageUrl: ''
+      imageUrl: MainKapeTayo
     },
     {
       id: "2",
@@ -33,7 +40,7 @@ export const projects = [
       tools: ["React", "Tailwind", "Static Website"],
       githubUrl: "https://github.com/allenpt221/static-coffee-outline",
       liveUrl: "https://coffeeoverview.vercel.app/",
-      imageUrl: ''
+      imageUrl: MainCoffeeOverView
     },
     {
       id: "3",
@@ -52,10 +59,10 @@ export const projects = [
       ],
       githubUrl: "https://github.com/allenpt221",
       liveUrl: "https://stockhub-l7jk.onrender.com/",
-      imageUrl: ''
+      imageUrl: MainStockHub
     },{
         id: "4",
-      title: "LMS - Learning Management System",
+      title: "StudySphere - Learning Management System",
       image: [StockHub, StockHub1, StockHub2, StockHub3],
       description:
         "A beautiful weather application providing detailed forecasts, severe weather alerts, and customizable locations.",
@@ -70,8 +77,8 @@ export const projects = [
         "Shadcn ui",
       ],
       githubUrl: "https://github.com/allenpt221",
-      liveUrl: "https://stockhub-l7jk.onrender.com/",
-      imageUrl: ''
+      liveUrl: "#",
+      imageUrl: MainStudySphere
     }
 
   ];

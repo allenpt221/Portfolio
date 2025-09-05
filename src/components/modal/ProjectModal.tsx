@@ -39,6 +39,7 @@ function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
+              viewport={{once: true}}
               >
                 <Card 
                   key={project.id} 
