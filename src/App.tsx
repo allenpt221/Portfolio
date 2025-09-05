@@ -12,6 +12,14 @@ import { motion } from 'framer-motion';
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
 
+import facebook from './assets/social/facebook.png'
+import instagram from './assets/social/instagram.png'
+import linkedIn from './assets/social/linkedin.png'
+import github from './assets/social/github.png'
+
+import profile from './assets/profilepic1.jpg'
+
+
 
 
 
@@ -53,32 +61,47 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setSubmitting(true);
+  const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-  const serviceID = import.meta.env.VITE_SERVICE_ID!;
-  const templateID = import.meta.env.VITE_TEMPLATE_ID!;
-  const publicKey = import.meta.env.VITE_PUBLIC_KEY!;
+    const serviceID = import.meta.env.VITE_SERVICE_ID!;
+    const templateID = import.meta.env.VITE_TEMPLATE_ID!;
+    const publicKey = import.meta.env.VITE_PUBLIC_KEY!;
 
-  emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
-    () => {
-      setSubmitting(false);
-      setSuccessSubmit(true);
+    emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
+      () => {
+        setSubmitting(false);
+        setSuccessSubmit(true);
 
-      // Clear inputs
-      setFormData({ email: "", message: "" });
+        // Clear inputs
+        setFormData({ email: "", message: "" });
 
-      setTimeout(() => setSuccessSubmit(false), 5000);
-    },
-    (error) => {
-      console.error("EmailJS error:", error);
-      setMessage("❌ Something went wrong, please try again later");
-      setSubmitting(false);
-      setTimeout(() => setMessage(""), 5000);
-    }
-  );
-};
+        setTimeout(() => setSuccessSubmit(false), 5000);
+      },
+      (error) => {
+        console.error("EmailJS error:", error);
+        setMessage("❌ Something went wrong, please try again later");
+        setSubmitting(false);
+        setTimeout(() => setMessage(""), 5000);
+      }
+    );
+  };
+
+  const socialLink = [{
+    socialImg: facebook,
+    link: "https://www.facebook.com/allenpt26"
+  }, {
+    socialImg: instagram,
+    link: "https://www.instagram.com/ptrcklln_/"
+  },{
+    socialImg: linkedIn,
+    link: "https://www.linkedin.com/in/pe%C3%B1a-patrick-allen-d-9b98b8374/"
+  },{
+    socialImg: github,
+    link: "https://github.com/allenpt221"
+  }]
+
 
 
   return (
@@ -103,7 +126,7 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
             viewport={{ once: true, amount: 0.3 }}
             className="md:w-[13rem]">
             <img 
-              src="https://scontent.fcrk7-1.fna.fbcdn.net/v/t39.30808-6/428630007_1373350323386093_3092854452950680741_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFi3jQ01ryVMVD2U0wzVOebZAXXqOCnh7NkBdeo4KeHs2ashidOl1zhm_cd7G7sxKPaex_i1KFMX-TFsCtR7b1-&_nc_ohc=t8XClXL3YKsQ7kNvwEx7Lup&_nc_oc=Adm5VMZFRz79sKQZgB3ekEbzrptbIRiF14kwOWo8GUuVT8810FuA4LGOQKAdg_Azh-8&_nc_zt=23&_nc_ht=scontent.fcrk7-1.fna&_nc_gid=fg4o5mYG6J5XmxCXT2RnzA&oh=00_AfXa-M-BoEvBNnpMKBmcvUEFhkTYNBqqR6bKgGxFt9fuzg&oe=68BA0B4A" 
+              src={profile}
               alt="Patrick Allen Pena"
               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-md transition-all duration-300 hover:scale-105"
             />
@@ -129,7 +152,7 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                 <span>Betis Guagua Pampanga</span>
               </motion.div>
               <motion.p 
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 45 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -137,6 +160,19 @@ const sendEmailToMe = (e: React.FormEvent<HTMLFormElement>) => {
                 Passionate full-stack developer with a focus on creating clean, efficient code and delightful user experiences. 
                 I enjoy turning complex problems into simple, beautiful solutions.
               </motion.p>
+            {/* social links */}
+              <motion.div className="flex gap-2 my-2"
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                viewport={{ once: true, amount: 0.3 }}
+                >
+              {socialLink.map((social, index) => (
+                <a href={social.link} key={index} target="_blank">
+                  <img src={social.socialImg} alt="error" className="w-7 h-7 hover:scale-105" />
+                </a>
+              ))}  
+              </motion.div>
               <motion.div 
               initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
