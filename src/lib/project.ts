@@ -25,7 +25,7 @@ export const projects = [
       title: "KapeTayo - Coffee Shop Management",
       image: [Kapetayo, Kapetayo1, Kapetayo2, Kapetayo3],
       description:
-        "A comprehensive coffee shop management system with inventory tracking, order management, and customer loyalty features.",
+        "is a full-stack system that design both on customer-facing and back-end operations of a coffee shop. It handles ordering, payments, and customer service",
       tools: ["React", "MongoDB", "Tailwind", "Express.js", "Node.Js"],
       githubUrl: "https://github.com/allenpt221",
       liveUrl: "https://kapetayo.onrender.com/",
@@ -36,7 +36,7 @@ export const projects = [
       title: "Coffee Overview - Coffee Description",
       image: [coffeeOverview, coffeeOverview1, coffeeOverview2],
       description:
-        "An intuitive task management application with drag-and-drop functionality, team collaboration, and progress tracking.",
+        "Is a static website that provides information about different types of coffee, their flavors, and dessert pairings.",
       tools: ["React", "Tailwind", "Static Website"],
       githubUrl: "https://github.com/allenpt221/static-coffee-outline",
       liveUrl: "https://coffeeoverview.vercel.app/",
@@ -47,7 +47,7 @@ export const projects = [
       title: "Stockhub - Inventory Management System",
       image: [StockHub, StockHub1, StockHub2, StockHub3],
       description:
-        "A beautiful weather application providing detailed forecasts, severe weather alerts, and customizable locations.",
+        "Is a system designed to help business owners track and manage products. It monitors stock levels, updates product details, generates reports, and allows the admin to include up to three users to assist with inventory tracking and updates.",
       tools: [
         "React",
         "TypeScript",
@@ -65,7 +65,7 @@ export const projects = [
       title: "StudySphere - Learning Management System",
       image: [StockHub, StockHub1, StockHub2, StockHub3],
       description:
-        "A beautiful weather application providing detailed forecasts, severe weather alerts, and customizable locations.",
+        "Is a platform built to make learning more social and enjoyable. It combines community features with courses, posts, follows, likes, and comments, creating an interactive space where learners can connect, share, and grow together.",
       tools: [
         "Nextjs",
         "TypeScript",
@@ -100,7 +100,7 @@ export function getColor(tool: string) {
         return "bg-yellow-100 text-yellow-700 border border-yellow-300";
       case "nextjs":
       case "prisma":
-        return "bg-black/20 text-black/90 border border-black";
+        return "bg-black/20  dark:bg-white/40 dark:border-white text-black/90 border border-black";
         case "postgresql":
         return "bg-blue-100 text-blue-500 border border-blue-500";
       default:

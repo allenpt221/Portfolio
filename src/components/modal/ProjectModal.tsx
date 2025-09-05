@@ -58,7 +58,7 @@ function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-600 dark:text-gray-300 flex-1 line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-300 flex-1 sm:line-clamp-2" title={project.description}>
                     {project.description}
                   </p>
 
