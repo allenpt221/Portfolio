@@ -172,7 +172,7 @@ function App() {
                 I enjoy turning complex problems into simple, beautiful solutions.
               </motion.p>
             {/* social links */}
-              <motion.div className="flex gap-2 my-2"
+              <motion.div className="flex gap-2 my-2 sm:items-start items-center sm:justify-normal justify-center"
                 initial={{ opacity: 0, y: 45 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 }}

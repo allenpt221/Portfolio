@@ -12,7 +12,7 @@ import tailwind from "../assets/tailwind.svg"
 import typescript from "../assets/typescript.png"
 import vite from "../assets/vite.svg"
 import vercel from "../assets/vercel.svg"
-import prisma from "../assets/prisma.png"
+import prisma from "../assets/prisma.svg"
 import postsql from "../assets/postgre.png"
 import { motion } from 'framer-motion';
 
