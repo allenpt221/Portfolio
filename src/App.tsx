@@ -379,7 +379,7 @@ function App() {
                     placeholder="example@gmail.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white mt-1"
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white mt-1 dark:text-black"
                     required
                   />
 
@@ -390,7 +390,7 @@ function App() {
                     rows={2}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white mt-1 resize-none"
+                    className="w-full border p-2 rounded dark:border-white bg-gray-100 dark:bg-white dark:text-black mt-1 resize-none"
                     required
                   />
 
