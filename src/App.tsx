@@ -370,7 +370,7 @@ function App() {
                   transition={{ duration: 0.5, delay: 0.25 }}
                   viewport={{ once: true, amount: 0.3 }}
                   
-                  onSubmit={sendEmailToMe} className="space-y-2 text-gray-500 dark:text-white">
+                  onSubmit={sendEmailToMe} className="space-y-2 text-gray-500">
                   <label>Email</label>
                   <input 
                     id="email"
