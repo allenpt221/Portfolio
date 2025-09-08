@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { MapPin, ExternalLink,  Github, ClipboardList, Moon, Sun, Phone, Terminal, MessageCircleWarning } from "lucide-react";
+import { MapPin, ExternalLink,  Github, ClipboardList, Moon, Sun, Phone, Terminal, MessageCircleWarning, Mail } from "lucide-react";
 import Logos from "./components/Logos";
 import GitHubCalendar from "react-github-calendar";
 
@@ -18,6 +18,8 @@ import linkedIn from './assets/social/linkedin.png'
 import github from './assets/social/github.png'
 
 import profile from './assets/profilepic1.jpg'
+
+import resumeFile from "./file/Resume.pdf";
 
 
 
@@ -102,11 +104,20 @@ function App() {
     link: "https://github.com/allenpt221"
   }]
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = resumeFile; 
+    link.download = "Patrick Allen-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 
 
   return (
     <div 
-      className="max-w-7xl mx-auto p-4 md:p-6 space-y-8"
+      className="max-w-7xl mx-auto p-4 md:p-6 space-y-8 my-3 rounded"
       style={{ color: currentColors.text, backgroundColor: currentColors.background }}
     >
       {/* Header Section */}
@@ -179,23 +190,23 @@ function App() {
               transition={{ duration: 0.5, delay: 0.15 }}
               viewport={{ once: true, amount: 0.3 }}
               className="mt-4 flex justify-center md:justify-start space-x-4">
-                <Link
-                  to="https://github.com/allenpt221" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-sm transition-colors hover:opacity-80 font-medium"
+                <a
+                  href="mailto:allenpt221@gmail.com"
+                  target="_blank"
+                  className="flex items-center text-sm transition-colors hover:opacity-80 font-medium border px-3 py-1 rounded bg-[#a3a3a375]"
                   style={{ color: currentColors.primary }}
                 >
-                  <Github size={16} className="mr-1" />
-                  GitHub
-                </Link>
-                <a 
-                  href="#" 
+                  <Mail  size={16} className="mr-1" />
+                  Email
+                </a>
+                <button 
+                  onClick={handleDownload} 
                   className="flex items-center text-sm transition-colors hover:opacity-80 font-medium"
                   style={{ color: currentColors.primary }}
                 >
                   <ExternalLink size={16} className="mr-1" />
-                  Portfolio
-                </a>
+                  Resume
+                </button>
               </motion.div>
             </div>
             <motion.button
@@ -417,6 +428,11 @@ function App() {
             </div>
           </Alert>
     )}
+    
+    <div className="border w-full"/>
+    <span>
+      © 2025 Patrick Allen Peña. All rights reserved.
+    </span>
     </div>
   );
 }

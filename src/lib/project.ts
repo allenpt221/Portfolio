@@ -77,7 +77,7 @@ export const projects = [
         "Shadcn ui",
       ],
       githubUrl: "https://github.com/allenpt221",
-      liveUrl: "#",
+      liveUrl: "https://learningsocial.vercel.app/",
       imageUrl: MainStudySphere
     }
 
