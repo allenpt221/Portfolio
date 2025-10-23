@@ -18,8 +18,7 @@ import github from './assets/social/github.png'
 
 import profile from './assets/profilepic1.jpg'
 
-import resumeFile from "./file/Resume.pdf";
-
+import resumeFile from './file/Resume.pdf'
 
 
 
