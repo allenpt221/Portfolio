@@ -10,7 +10,6 @@ import Project from "@/components/Project";
 import { useTheme } from "@/components/theme-provider";
 import { motion } from 'framer-motion';
 import emailjs from "@emailjs/browser";
-import { Link } from "react-router-dom";
 
 import facebook from './assets/social/facebook.png'
 import instagram from './assets/social/instagram.png'
@@ -19,7 +18,7 @@ import github from './assets/social/github.png'
 
 import profile from './assets/profilepic1.jpg'
 
-import resumeFile from "./file/Resume.pdf";
+import resumeFile from "./file/RESUME.pdf";
 
 
 
